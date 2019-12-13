@@ -11,7 +11,6 @@ var _pdfkitReferenceMock = _interopRequireDefault(require("./pdfkitReferenceMock
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var { degrees, rgb,PDFDocument ,StandardFonts } = require('pdf-lib');
 
 
 // eslint-disable-next-line import/no-unresolved
