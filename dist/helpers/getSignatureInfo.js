@@ -38,7 +38,7 @@ const getSignatureInfo = (buffer, password = undefined) => {
     });
     const cert = certBags.localKeyId[0].cert;
     //NAME CERT.SUBJECT RETURN
-    console.log(key);
+    //console.log(key);
     return cert.subject.getField('CN').value;
 
   } catch (e) {
