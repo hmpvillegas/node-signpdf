@@ -88,7 +88,7 @@ class SignPdf {
     })[_nodeForge.default.pki.oids.pkcs8ShroudedKeyBag];
 
     const privateKey = keyBags[0].key; // Here comes the actual PKCS#7 signing.
-
+    
     const p7 = _nodeForge.default.pkcs7.createSignedData(); // Start off by setting the content.
 
 
@@ -131,7 +131,7 @@ class SignPdf {
         value: new Date()
       }]
     }); // Sign in detached mode.
-
+    
     p7.sign({
       detached: true
     }); // Check if the PDF has a good enough placeholder to fit the signature.
@@ -139,7 +139,7 @@ class SignPdf {
     const raw = _nodeForge.default.asn1.toDer(p7.toAsn1()).getBytes(); // placeholderLength represents the length of the HEXified symbols but we're
     // checking the actual lengths.
 
-
+    //console.log(p7);
     if (raw.length * 2 > placeholderLength) {
       throw new _SignPdfError.default(`Signature exceeds placeholder length: ${raw.length * 2} > ${placeholderLength}`, _SignPdfError.default.TYPE_INPUT);
     }
@@ -147,11 +147,11 @@ class SignPdf {
     let signature = Buffer.from(raw, 'binary').toString('hex'); // Store the HEXified signature. At least useful in tests.
 
     this.lastSignature = signature; // Pad the signature with zeroes so the it is the same length as the placeholder
-
+    
     signature += Buffer.from(String.fromCharCode(0).repeat(placeholderLength / 2 - raw.length)).toString('hex'); // Place it in the document.
 
     pdf = Buffer.concat([pdf.slice(0, byteRange[1]), Buffer.from(`<${signature}>`), pdf.slice(byteRange[1])]); // Magic. Done.
-
+    
     return pdf;
   }
 

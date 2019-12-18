@@ -12,7 +12,6 @@ var _pdfkitReferenceMock = _interopRequireDefault(require("./pdfkitReferenceMock
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 
-
 // eslint-disable-next-line import/no-unresolved
 
 /**
@@ -42,11 +41,11 @@ const pdfkitAddPlaceholder = ({
     Reason: new String(reason),
     // eslint-disable-line no-new-wrappers
     M: new Date(),
-    ContactInfo: new String('hrmo@davaocity.gov.ph'),
+    ContactInfo: new String('Contact Info of p12'),
     // eslint-disable-line no-new-wrappers
     Name: new String('Name from p12'),
     // eslint-disable-line no-new-wrappers
-    Location: new String('HRMO, DAVAO CITY') // eslint-disable-line no-new-wrappers
+    Location: new String('Location of p12') // eslint-disable-line no-new-wrappers
     
   }); // Check if pdf already contains acroform field
   
